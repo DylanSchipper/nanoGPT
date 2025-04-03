@@ -9,6 +9,10 @@ __pycache__/
 *.pyc
 input.txt
 env/
+<<<<<<< HEAD
 venv/
 /data/Movie_scripts
 /data/moviescripts
+=======
+venv/
+>>>>>>> parent of 6cc0dc5 (Pasting Movie scripts)
