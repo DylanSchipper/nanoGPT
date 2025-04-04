@@ -16,7 +16,7 @@ wandb_project = 'moviescripts-char'
 wandb_run_name = 'mini-gpt-moviescripts'
 
 dataset = 'moviescripts_char'
-data_dir = 'data/moviescripts_char'  # Ensure this directory contains train.bin and val.bin
+data_dir = 'data/moviescripts_char'  # This directory should contain train.bin and val.bin
 
 # Training parameters tuned for a GTX 1660 Ti:
 gradient_accumulation_steps = 1  # No gradient accumulation initially
@@ -39,4 +39,4 @@ warmup_iters = 100
 
 # Device settings
 device = 'cuda'                # Use GPU if available; otherwise, set to 'cpu'
-compile = False                # Enable torch.compile for potential speedups (if supported)
+compile = False                # Disable torch.compile if Triton is not available
