@@ -16,7 +16,7 @@ wandb_log = False          # Disable wandb logging unless needed
 wandb_project = 'moviescripts-word'
 wandb_run_name = 'mini-gpt-moviescripts-word'
 
-dataset = 'moviescripts_word'
+dataset = 'moviescripts'
 data_dir = 'data/moviescripts'  # Ensure this directory contains train.bin and val.bin
 
 # Training parameters tuned for a GTX 1660 Ti
