@@ -39,4 +39,4 @@ warmup_iters = 100
 
 # Device settings
 device = 'cuda'                # Use GPU if available; otherwise, set to 'cpu'
-compile = True                 # Enable torch.compile for potential speedups (if supported)
+compile = False                # Enable torch.compile for potential speedups (if supported)
