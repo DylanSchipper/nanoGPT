@@ -1,41 +1,36 @@
 # Train a miniature word-level movie scripts model
-# Optimized for a GTX 1660 Ti (6GB VRAM)
-# Start with batch_size = 16; adjust as needed for memory constraints
+# Optimized for GTX 1660 Ti (6GB VRAM)
 
 out_dir = 'out-moviescripts-word'
-eval_interval = 250        # Evaluate frequently to monitor overfitting
-eval_iters = 200
-log_interval = 10          # Log every 10 iterations
+eval_interval = 250
+eval_iters    = 200
+log_interval  = 10
 
-# Save checkpoints only when validation improves
 always_save_checkpoint = False
+wandb_log              = False
 
-wandb_log = False          # Disable wandb logging unless needed
-wandb_project = 'moviescripts-word'
-wandb_run_name = 'mini-gpt-moviescripts-word'
+wandb_project   = 'moviescripts-word'
+wandb_run_name  = 'mini-gpt-word'
 
-dataset = 'moviescripts'
-data_dir = 'data/moviescripts'  # Ensure this directory contains train.bin and val.bin from your word-level prepare script
+dataset                = 'moviescripts'
+data_dir               = 'data/moviescripts'   # must match your prepare output
 
-# Training parameters tuned for a GTX 1660 Ti:
-gradient_accumulation_steps = 1  # No gradient accumulation initially
-batch_size = 16                  # Safe starting batch size (adjust if needed)
-block_size = 256                 # Context length in tokens (words/subwords)
+gradient_accumulation_steps = 1
+batch_size                = 16    # safe start for 6GB VRAM
+block_size                = 256   # subword context length
 
-# Define a small GPT model architecture
+# small GPT architecture
 n_layer = 6
-n_head = 6
-n_embd = 384
+n_head  = 6
+n_embd  = 384
 dropout = 0.2
 
-learning_rate = 3e-4           # Moderate learning rate for stability
-max_iters = 5000
-lr_decay_iters = 5000          # Typically set equal to max_iters
-min_lr = 1e-4                  # About one-tenth of the initial learning rate
-beta2 = 0.99
+learning_rate   = 3e-4
+max_iters       = 5000
+lr_decay_iters  = 5000
+min_lr          = 1e-4
+beta2           = 0.99
+warmup_iters    = 100
 
-warmup_iters = 100
-
-# Device settings
-device = 'cuda'                # Use GPU if available; otherwise, set to 'cpu'
-compile = False                # Disable torch.compile if Triton is not available
+device  = 'cuda'    # switch back to 'cpu' if CUDA unavailable
+compile = False     # disable torch.compile if Triton isn’t installed
